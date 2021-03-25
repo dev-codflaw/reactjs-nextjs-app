@@ -1,7 +1,7 @@
 import { server } from '../../../config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Meta from '../../../components/Meta'
+import Meta from '../../../components/common/Meta'
 import { articles } from '../../../data'
 
 const article = ({ article }) => {
