@@ -41,13 +41,13 @@ const Nav = () => {
                     <Link href="/" color="inherit">CODFLAW</Link>
                 </Typography>
                 <span style={{ marginLeft: '.5rem' }} >
-                  <Link href="/latest" color="inherit">Latest</Link>
-
+                  <Link href="/latest" color="inherit">Latest Post</Link>
                 </span>
-              <span style={{ marginLeft: '.5rem' }} >
-                <Link href="/about" color="inherit">About</Link>
 
-              </span>
+              {/* <span style={{ marginLeft: '.5rem' }} >
+                <Link href="/about" color="inherit">About</Link>
+              </span> */}
+
               <span style={{ marginLeft: '.5rem' }}>
                <Link href="/category"  color="inherit">Category</Link>
 

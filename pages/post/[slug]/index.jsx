@@ -5,12 +5,16 @@ import { useRouter } from 'next/router'
 import { server } from '../../../config'
 import PostDetail from '../../../components/article/PostDetail'
 import Meta from '../../../components/common/Meta'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Container from '@material-ui/core/Container'
+
 
 
 const post = ({ post }) => {
 
   const router = useRouter()
   const { slug } = router.query
+  const [loading, setLoading] = useState(true);
   const [dataArr, setDataArr] = useState([]);
   const [postDetail, setPostDetail] = useState([]);
 
@@ -34,6 +38,7 @@ useEffect(() => {
     const getPost = async () => {
       const responseFromServer = await fetchPost()
       setPostDetail(responseFromServer);
+      setLoading(false);
     }
     // alert(JSON.stringify(router))
     getPost()
@@ -61,16 +66,12 @@ useEffect(() => {
   return (
     <>
       <Meta title="Post" keywords="" description={postDetail.title}/>
-      {/* <h2>{slug}</h2> */}
-      {/* {slug && <span>{slug}</span>}<br/> */}
-      {/* {JSON.stringify(router.query.slug)} */}
-      {/* {router.query.slug} */}
-      <br/><br />
-                          <PostDetail item={postDetail} />
-                       
+      <Container maxWidth="lg">
+       
+        {loading ? <LinearProgress/> : <PostDetail item={postDetail} />}   
+        <br />
+      </Container>
 
-      <br />
-      <Link href='/'>Go Back</Link>
     </>
   )
 }

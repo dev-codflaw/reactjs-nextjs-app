@@ -4,12 +4,12 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import {Link} from 'react-router-dom'
 import { Grid, Paper, Chip } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import {server} from '../../config'
+import { useState } from 'react'
 
 
 const useStyles = makeStyles({
@@ -26,31 +26,32 @@ const useStyles = makeStyles({
 const CategoryItem = (props) => {
     const classes = useStyles();
 
+    const [raised, setRaised] = useState(false)
+
+    const toggleRaised = () =>  setRaised(true)
+    const toggleDown = () =>  setRaised(false)
+
     return(
         <>
-            <Grid item xs={12} sm={6} md={6} lg={4}>
-            <Card className={classes.root}>
+        <Grid item xs={12} sm={6} md={6} lg={4}>
+            <Card onMouseOver={toggleRaised} onMouseOut={toggleDown} raised={raised}>
                 <CardActionArea>
                     {props.item.image &&                     
                     <CardMedia
                         component="img"
-                        alt="Contemplative Reptile"
+                        alt="card image"
                         height="140"
                         image={`${server}`+props.item.image}
                     />}
 
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h6" component="h2">
                             {props.item.name}
                         </Typography>
-                        {/* <Typography variant="body2" color="textSecondary" component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
-                        </Typography> */}
                     </CardContent>
                 </CardActionArea>
             </Card>
-            </Grid>
+        </Grid>
 
         </>
     );

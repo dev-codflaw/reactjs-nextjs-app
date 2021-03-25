@@ -7,24 +7,15 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { server } from '../../config'
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-    main: {
-        paddingTop: '30px',
-        paddingBottom: '20px'
-    }
-  });
+
 
 const CategoryList = ({ categories }) => {
-
-    const classes = useStyles();
 
     const [error, setError] = useState(false);
     const [categoryDataArr, setCategoryDataArr] = useState([]);
     const [loading, setLoading] = useState(true);
-  
+
+
     useEffect(()=>{
         axios.get(`${server}/categories/`)
         .then(response => {
@@ -56,18 +47,16 @@ const CategoryList = ({ categories }) => {
         
     }, []);
   
-  
+
+ 
   return (
     <div>
-        <Container maxWidth="lg">
-            {loading && <LinearProgress/> }
-
-            {/* {JSON.stringify(axios.defaults.baseURL)} */}
-            {/* {JSON.stringify(categoryDataArr)} */}
-            <Grid container spacing={3} className={classes.main}>
-                    {categoryDataArr.map((category, index) => < CategoryItem item={category} key={index}  /> )}
+    <Container maxWidth="lg">
+            <Grid container spacing={3} >
+                {categoryDataArr.map((category, index) => (< CategoryItem item={category} key={index}  />) )}
             </Grid>
-        </Container>
+        
+    </Container>
     </div>
   )
 }

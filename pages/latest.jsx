@@ -4,10 +4,24 @@ import Meta from '../components/common/Meta'
 import PostList from '../components/article/PostList'
 import { LinearProgress } from '@material-ui/core'
 import {server} from '../config'
+import {Container} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
 
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(1),
+    },
+  },
+}));
 
+
+// latest page
 const latest = () => {
+  const classes = useStyles();
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +32,6 @@ const latest = () => {
       setPosts(postsFromServer);
       setLoading(false);
     }
-
     getPosts()
   }, [])
 
@@ -34,9 +47,12 @@ const latest = () => {
   return (
       <>
           <Meta title='Latest' />
-          <h4>Latest Posts</h4>
-          {loading && <LinearProgress/>}
-          <PostList posts={posts}/>   
+          <div className={classes.root}>
+            {loading && <LinearProgress />}
+          </div>
+          <Container maxWidth='sm'>
+              <PostList posts={posts}/>   
+          </Container>
       </>
   )
 }

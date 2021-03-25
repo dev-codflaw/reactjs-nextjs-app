@@ -1,14 +1,20 @@
 import Layout from '../layout/Layout'
 import '../styles/globals.css'
 
-// import Router from 'next/router';
+
+// import Router from "next/router"
 // import NProgress from 'nprogress'; //nprogress module
 // import 'nprogress/nprogress.css'; //styles of nprogress
 
-// //Binding events. 
-// Router.events.on('routeChangeStart', () => NProgress.start());
-// Router.events.on('routeChangeComplete', () => NProgress.done());
-// Router.events.on('routeChangeError', () => NProgress.done());
+//Binding events. 
+
+// Router.onRouteChangeStart = url => {
+//   NProgress.start()
+// }
+
+// Router.onRouteChangeComplete = () => NProgress.done()
+
+// Router.onRouteChangeError = () => NProgress.done()
 
 
 function MyApp({ Component, pageProps }) {
@@ -19,4 +25,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default MyApp  
