@@ -1,0 +1,16 @@
+
+
+.root{
+  flex-grow: 1;
+}
+.title{
+  flex-grow: 1;
+}
+
+.navbar{
+  background: #2E3B55;
+}
+.linkStyle{
+  color: white;
+  text-transform: uppercase;
+}
