@@ -4,7 +4,7 @@ import CategoryList from '../components/category/CategoryList'
 
 const category = () => {
   return (
-    <div>
+    <div style={{paddingTop:'20px', paddingBottom:'20px'}}>
         <Meta title='Category' />
         < CategoryList />
     </div>

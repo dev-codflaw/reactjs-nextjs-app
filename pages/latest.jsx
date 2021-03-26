@@ -6,24 +6,34 @@ import { LinearProgress } from '@material-ui/core'
 import {server} from '../config'
 import {Container} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Backdrop from "@material-ui/core/Backdrop";
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(1),
-    },
-  },
+  
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff"
+  }
 }));
 
 
 // latest page
 const latest = () => {
   const classes = useStyles();
-
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   useEffect(() => {
 
@@ -47,11 +57,14 @@ const latest = () => {
   return (
       <>
           <Meta title='Latest' />
-          <div className={classes.root}>
-            {loading && <LinearProgress />}
-          </div>
-          <Container maxWidth='sm'>
-              <PostList posts={posts}/>   
+          <Container maxWidth='sm' style={{paddingTop:'20px', paddingBottom:'20px'}}>
+            {loading && 
+              <Backdrop className={classes.backdrop} open={open} >
+                <CircularProgress color="inherit" />
+              </Backdrop>
+            }
+            {loading ? <LinearProgress /> : <PostList posts={posts}/> }
+                
           </Container>
       </>
   )

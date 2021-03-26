@@ -52,9 +52,9 @@ const CategoryList = ({ categories }) => {
   return (
     <div>
     <Container maxWidth="lg">
-            <Grid container spacing={3} >
-                {categoryDataArr.map((category, index) => (< CategoryItem item={category} key={index}  />) )}
-            </Grid>
+        <Grid container spacing={3} >
+            {categoryDataArr.map((category, index) => (< CategoryItem item={category} key={index}  />) )}
+        </Grid>
         
     </Container>
     </div>

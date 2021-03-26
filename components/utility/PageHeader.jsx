@@ -5,7 +5,6 @@ const PageHeader = (props)=> {
     return(
         <React.Fragment>
             <img src={props.image}  />
-
         </React.Fragment>
     ); 
 }

@@ -7,16 +7,35 @@ import PostDetail from '../../../components/article/PostDetail'
 import Meta from '../../../components/common/Meta'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Container from '@material-ui/core/Container'
-
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Backdrop from "@material-ui/core/Backdrop";
+const useStyles = makeStyles((theme) => ({
+  
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff"
+  }
+}));
 
 
 const post = ({ post }) => {
-
+  const classes = useStyles();
   const router = useRouter()
   const { slug } = router.query
   const [loading, setLoading] = useState(true);
   const [dataArr, setDataArr] = useState([]);
   const [postDetail, setPostDetail] = useState([]);
+
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
 //   useEffect(() => {
 //     axios.get(`http://127.0.0.1:8000/posts/${slug}/`)
@@ -67,7 +86,11 @@ useEffect(() => {
     <>
       <Meta title="Post" keywords="" description={postDetail.title}/>
       <Container maxWidth="lg">
-       
+      {loading && 
+              <Backdrop className={classes.backdrop} open={open} >
+                <CircularProgress color="inherit" />
+              </Backdrop>
+            }
         {loading ? <LinearProgress/> : <PostDetail item={postDetail} />}   
         <br />
       </Container>
