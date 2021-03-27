@@ -61,8 +61,12 @@ const useStyles = makeStyles((theme) => ({
             {/* <Link href={{pathname: '/post/[slug]', query: {slug: props.item.slug},}} > */}
             <Link href={{pathname: '/[category]/[slug]', query: {slug: props.item.slug, category: categoryName},}} >
             <CardActionArea component="a"  >
-              <Card className={classes.card} onMouseOver={toggleRaised} onMouseOut={toggleDown} raised={raised}
-              style={{backgroundColor: '#'+Math.floor(Math.random()*16777215).toString(16)+'3d'}}>
+              <Card className={classes.card} 
+              // onMouseOver={toggleRaised} 
+              // onMouseOut={toggleDown} 
+              // raised={raised}
+              style={{backgroundColor: '#'+Math.floor(Math.random()*16777215).toString(16)+'3d'}}
+              >
                 <div className={classes.cardDetails}>
                   
                 {props.item.image &&

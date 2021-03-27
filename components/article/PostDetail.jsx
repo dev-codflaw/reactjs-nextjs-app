@@ -74,7 +74,7 @@ const PostDetail = ({item}) => {
                 <Typography component="h2" variant="h5">
                     {item.subtitle}
                 </Typography>
-                <Typography component="p" >
+                <Typography component="div" >
                     <div dangerouslySetInnerHTML={{__html:item.content}}></div>
                 </Typography>
 
