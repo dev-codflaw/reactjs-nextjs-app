@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Meta from '../../components/common/Meta'
 
 
 const TagComponent = ({data}) => {
@@ -52,13 +53,16 @@ const PostDetail = ({item}) => {
     const classes = useStyles();
 
     return(
-        <>
+        <>  
             <Container maxWidth="lg">
-
+                
                 {item.image && 
                     <PostImage image={`${server}`+item.image} />
                 }
-
+                <br/>
+                <Typography variant="overline" color="primary">
+                      {item.category && item.category.name}
+                </Typography>
                 <Typography component="h3" variant="h4">
                     {item.title}
                 </Typography>
@@ -70,7 +74,7 @@ const PostDetail = ({item}) => {
                 <Typography component="h2" variant="h5">
                     {item.subtitle}
                 </Typography>
-                <Typography component="p" variant="strinig">
+                <Typography component="p" >
                     <div dangerouslySetInnerHTML={{__html:item.content}}></div>
                 </Typography>
 

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const post = ({ post }) => {
+const category = () => {
   const classes = useStyles();
   const router = useRouter()
   const { slug } = router.query
@@ -84,7 +84,7 @@ useEffect(() => {
 
   return (
     <>
-      <Meta title="Post" keywords="" description={postDetail.title}/>
+      <Meta title={postDetail.title} keywords={postDetail.keyword} description={postDetail.description}/>
       <Container maxWidth="lg">
       {loading && 
               <Backdrop className={classes.backdrop} open={open} >
@@ -154,4 +154,4 @@ useEffect(() => {
 //   }
 // }
 
-export default post
+export default category

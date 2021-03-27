@@ -40,7 +40,7 @@ const posts = () => {
 
   // Fetch Posts 
   const fetchPosts = async () => {
-    const res = await axios.get(`${server}/posts/`);
+    const res = await axios.get(`${server}/api/article/`);
     const data = await res.data;
     console.log(data);
 

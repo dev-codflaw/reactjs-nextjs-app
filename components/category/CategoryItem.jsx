@@ -10,6 +10,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import {server} from '../../config'
 import { useState } from 'react'
+import Link from 'next/link'
 
 
 const useStyles = makeStyles({
@@ -34,6 +35,7 @@ const CategoryItem = (props) => {
     return(
         <>
         <Grid item xs={12} sm={6} md={6} lg={4}>
+            <Link href={{pathname: '/[category]', query: { category: props.item.slug, } }}>
             <Card onMouseOver={toggleRaised} onMouseOut={toggleDown} raised={raised}>
                 <CardActionArea>
                     {props.item.image &&                     
@@ -50,7 +52,11 @@ const CategoryItem = (props) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
+                
+                
             </Card>
+            </Link>
+
         </Grid>
 
         </>

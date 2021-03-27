@@ -17,7 +17,7 @@ const CategoryList = ({ categories }) => {
 
 
     useEffect(()=>{
-        axios.get(`${server}/categories/`)
+        axios.get(`${server}/api/category/`)
         .then(response => {
             console.log(response);
             setCategoryDataArr(response.data);
@@ -53,7 +53,7 @@ const CategoryList = ({ categories }) => {
     <div>
     <Container maxWidth="lg">
         <Grid container spacing={3} >
-            {categoryDataArr.map((category, index) => (< CategoryItem item={category} key={index}  />) )}
+            {categoryDataArr.map((category, index) => ( <CategoryItem item={category} key={index} />) )}
         </Grid>
         
     </Container>

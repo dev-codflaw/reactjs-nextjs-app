@@ -46,14 +46,20 @@ const useStyles = makeStyles((theme) => ({
 
     const classes = useStyles();
     const [raised, setRaised] = useState(false)
+    const [categoryName, setCategoryName] = useState(props.item.category ? props.item.category.slug : 'blog');
 
     const toggleRaised = () =>  setRaised(true)
     const toggleDown = () =>  setRaised(false)
 
+    
+
+
       return(
           <>
+
             <Grid item xs={12}>
-            <Link href={{pathname: '/post/[slug]', query: {slug: props.item.slug},}} >
+            {/* <Link href={{pathname: '/post/[slug]', query: {slug: props.item.slug},}} > */}
+            <Link href={{pathname: '/[category]/[slug]', query: {slug: props.item.slug, category: categoryName},}} >
             <CardActionArea component="a"  >
               <Card className={classes.card} onMouseOver={toggleRaised} onMouseOut={toggleDown} raised={raised}
               style={{backgroundColor: '#'+Math.floor(Math.random()*16777215).toString(16)+'3d'}}>
@@ -65,10 +71,13 @@ const useStyles = makeStyles((theme) => ({
                               image={`${server}`+props.item.image}
                               title="Card Image"
                           />}
-                  <CardContent>
+                  <CardContent style={{paddingBottom: '0px'}}>
                     <Typography variant="subtitle1" color="textSecondary">
                       { new Date(props.item.updated_at).toLocaleString('default', {month:'short'})} &nbsp;
                       { new Date(props.item.updated_at).getDate()}
+                    </Typography>
+                    <Typography variant="overline" color="primary">
+                      {props.item.category && props.item.category.name}
                     </Typography>        
                     <Typography component="h2" variant="h5">
                       {props.item.title}
@@ -76,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
                     <Typography component="h2" variant="h5">
                       {props.item.tags.map((tag, index)=> (
                                             <span key={index}>
+                                              
                                                 <Chip
                                                   label={tag.name}
                                                   variant="outlined"
@@ -86,9 +96,9 @@ const useStyles = makeStyles((theme) => ({
                                               )}
                     </Typography>
 
-                    {/* <Typography variant="subtitle1" color="primary">
-                      Continue reading...
-                    </Typography> */}
+                    <Typography variant="button" color="primary">
+                      <p>Read Article</p>
+                    </Typography>
                   </CardContent>
                 </div>
               </Card><br/>
