@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
             <Grid item xs={12}>
             {/* <Link href={{pathname: '/post/[slug]', query: {slug: props.item.slug},}} > */}
-            <Link href={{pathname: '/[category]/[slug]', query: {slug: props.item.slug, category: categoryName},}} >
+            {/* <Link href="/[category]/[slug]" as={`/${categoryName}/${props.item.slug}`} > */}
             <CardActionArea component="a"  >
               <Card className={classes.card} 
               // onMouseOver={toggleRaised} 
@@ -103,11 +103,13 @@ const useStyles = makeStyles((theme) => ({
                     <Typography variant="button" color="primary">
                       <p>Read Article</p>
                     </Typography>
+                    <Link href="/[category]/[slug]" as={`/${categoryName}/${props.item.slug}`} >View
+</Link>                          
                   </CardContent>
                 </div>
               </Card><br/>
             </CardActionArea>
-            </Link>
+            {/* </Link> */}
             </Grid>
           </>
       );

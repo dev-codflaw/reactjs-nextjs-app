@@ -35,7 +35,7 @@ const CategoryItem = (props) => {
     return(
         <>
         <Grid item xs={12} sm={6} md={6} lg={4}>
-            <Link href={{pathname: '/[category]', query: { category: props.item.slug, } }}>
+            {/* <Link href={{pathname: '/[category]', query: { category: props.item.slug, } }}> */}
             <Card onMouseOver={toggleRaised} onMouseOut={toggleDown} raised={raised}>
                 <CardActionArea>
                     {props.item.image &&                     
@@ -52,10 +52,12 @@ const CategoryItem = (props) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                
+                <Link href="/[category]" as={`/${props.item.slug}`}>View</Link>
+
+
                 
             </Card>
-            </Link>
+            {/* </Link> */}
 
         </Grid>
 
