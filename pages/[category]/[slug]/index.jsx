@@ -61,6 +61,7 @@ useEffect(() => {
     }
     // alert(JSON.stringify(router))
     getPost()
+    alert(JSON.stringify(router))
 
   }, [slug])
 

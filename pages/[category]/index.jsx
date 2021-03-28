@@ -40,6 +40,7 @@ const category_article_list = () => {
     setOpen(!open);
   };
 
+  
   useEffect(() => {
 
     const getPosts = async () => {
@@ -48,6 +49,8 @@ const category_article_list = () => {
       setLoading(false);
     }
     getPosts()
+    alert(JSON.stringify(router))
+
   }, [category])
 
 
